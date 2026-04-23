@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上城区政协委员工作室履职平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red-deep: oklch(38% 0.18 25);
+      --red-mid: oklch(48% 0.21 28);
+      --red-bright: oklch(55% 0.22 30);
+      --gold: oklch(72% 0.15 75);
+      --gold-light: oklch(85% 0.10 80);
+      --ink: oklch(18% 0.02 260);
+      --ink-mid: oklch(35% 0.02 260);
+      --ink-soft: oklch(55% 0.02 260);
+      --surface: oklch(97% 0.005 80);
+      --surface-warm: oklch(95% 0.01 75);
+      --white: oklch(99% 0.002 80);
+
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+      --space-4xl: 96px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', system-ui, sans-serif;
+      background-color: var(--surface);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      background: var(--red-deep);
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3xl) var(--space-xl);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 120%, oklch(55% 0.20 28 / 0.5) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 50%, oklch(45% 0.18 25 / 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 50%, oklch(45% 0.18 25 / 0.3) 0%, transparent 60%);
+    }
+
+    .header-emblem {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .emblem-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid oklch(72% 0.15 75 / 0.15);
+    }
+
+    .emblem-ring:nth-child(1) { width: 500px; height: 500px; top: -200px; right: -100px; }
+    .emblem-ring:nth-child(2) { width: 350px; height: 350px; top: -100px; right: -50px; }
+    .emblem-ring:nth-child(3) { width: 600px; height: 600px; bottom: -350px; left: -150px; }
+
+    .header-eyebrow {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .header-eyebrow::before,
+    .header-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      font-size: clamp(26px, 4vw, 44px);
+      color: var(--white);
+      text-align: center;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      position: relative;
+      margin-bottom: var(--space-lg);
+    }
+
+    .header-subtitle {
+      font-size: 14px;
+      color: oklch(85% 0.06 50);
+      letter-spacing: 0.1em;
+      position: relative;
+    }
+
+    .header-stats-row {
+      display: flex;
+      gap: var(--space-2xl);
+      margin-top: var(--space-2xl);
+      position: relative;
+    }
+
+    .header-stat {
+      text-align: center;
+    }
+
+    .header-stat-number {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .header-stat-label {
+      font-size: 12px;
+      color: oklch(80% 0.05 50);
+      letter-spacing: 0.12em;
+      margin-top: var(--space-xs);
+      display: block;
+    }
+
+    .header-stat-divider {
+      width: 1px;
+      background: oklch(72% 0.12 75 / 0.3);
+      align-self: stretch;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid oklch(90% 0.005 80);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px oklch(18% 0.02 260 / 0.06);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+      display: flex;
+      gap: var(--space-xs);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    .nav-item {
+      padding: var(--space-md) var(--space-lg);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 180ms ease, border-color 180ms ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--red-mid);
+      border-bottom-color: var(--red-mid);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+    }
+
+    section {
+      padding: var(--space-4xl) 0;
+    }
+
+    section + section {
+      border-top: 1px solid oklch(90% 0.008 75);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-3xl);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--red-mid);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--red-mid);
+      opacity: 0.4;
+    }
+
+    h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+    }
+
+    .section-desc {
+      margin-top: var(--space-md);
+      font-size: 15px;
+      color: var(--ink-soft);
+      max-width: 60ch;
+      line-height: 1.75;
+    }
+
+    /* ── OVERVIEW CARD ── */
+    .overview-block {
+      background: var(--white);
+      border-radius: 16px;
+      padding: var(--space-2xl) var(--space-3xl);
+      border: 1px solid oklch(90% 0.008 75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overview-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--red-mid), var(--red-deep));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .overview-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--ink-mid);
+      max-width: 80ch;
+    }
+
+    /* ── STAR RATING CHART ── */
+    .rating-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+    }
+
+    .rating-visual {
+      background: var(--white);
+      border-radius: 16px;
+      padding: var(--space-2xl);
+      border: 1px solid oklch(90% 0.008 75);
+    }
+
+    .rating-visual h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: var(--space-xl);
+    }
+
+    .star-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .star-label {
+      font-size: 13px;
+      color: var(--ink-soft);
+      width: 52px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .star-icon {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .star-bar-track {
+      flex: 1;
+      height: 10px;
+      background: oklch(92% 0.006 75);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .star-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--red-mid), var(--red-bright));
+      transform-origin: left;
+      animation: barGrow 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: calc(var(--i) * 150ms);
+    }
+
+    @keyframes barGrow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .star-count {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--red-mid);
+      width: 36px;
+      text-align: right;
+    }
+
+    .donut-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xl);
+    }
+
+    .donut-svg {
+      flex-shrink: 0;
+    }
+
+    .donut-legend {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 13px;
+      color: var(--ink-mid);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── STUDIOS GRID ── */
+    .studios-filter {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+
+    .filter-btn {
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid oklch(87% 0.01 75);
+      background: var(--white);
+      color: var(--ink-soft);
+      transition: all 150ms ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--red-mid);
+      color: var(--red-mid);
+    }
+
+    .filter-btn.active {
+      background: var(--red-mid);
+      border-color: var(--red-mid);
+      color: var(--white);
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 99px;
+      border: 1px solid oklch(87% 0.01 75);
+      background: var(--white);
+      font-size: 13px;
+      color: var(--ink);
+      outline: none;
+      font-family: inherit;
+      transition: border-color 150ms;
+    }
+
+    .search-box:focus {
+      border-color: var(--red-mid);
+    }
+
+    .studios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .studio-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: var(--space-xl);
+      border: 1px solid oklch(91% 0.008 75);
+      transition: box-shadow 200ms ease, transform 200ms ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .studio-card:hover {
+      box-shadow: 0 8px 32px oklch(38% 0.18 25 / 0.10);
+      transform: translateY(-2px);
+    }
+
+    .studio-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .studio-id {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: oklch(70% 0.12 25);
+      background: oklch(95% 0.02 25);
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .studio-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .studio-leader {
+      font-size: 13px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .studio-leader-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .studio-address {
+      font-size: 12px;
+      color: oklch(60% 0.01 260);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+
+    .studio-address-icon {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      opacity: 0.4;
+      margin-top: 2px;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .activity-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid oklch(91% 0.008 75);
+      transition: box-shadow 200ms, transform 200ms;
+    }
+
+    .activity-card:hover {
+      box-shadow: 0 8px 32px oklch(18% 0.02 260 / 0.10);
+      transform: translateY(-3px);
+    }
+
+    .activity-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: oklch(93% 0.01 75);
+    }
+
+    .activity-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .activity-card:hover .activity-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .activity-body {
+      padding: var(--space-lg);
+    }
+
+    .activity-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--red-mid);
+      background: oklch(95% 0.025 25);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: var(--space-sm);
+    }
+
+    .activity-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── PAGINATION ── */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-3xl);
+      align-items: center;
+    }
+
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid oklch(88% 0.008 75);
+      background: var(--white);
+      font-size: 13px;
+      color: var(--ink-soft);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 150ms;
+    }
+
+    .page-btn:hover, .page-btn.active {
+      background: var(--red-mid);
+      border-color: var(--red-mid);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      margin-top: var(--space-4xl);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-3xl);
+      padding-bottom: var(--space-2xl);
+      border-bottom: 1px solid oklch(30% 0.01 260);
+    }
+
+    .footer-brand {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: oklch(60% 0.01 260);
+      margin-top: var(--space-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--space-3xl);
+    }
+
+    .footer-link-group h4 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: oklch(50% 0.01 260);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-link-group a {
+      display: block;
+      font-size: 14px;
+      color: oklch(65% 0.01 260);
+      text-decoration: none;
+      margin-bottom: var(--space-sm);
+      transition: color 150ms;
+    }
+
+    .footer-link-group a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      padding-top: var(--space-xl);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: oklch(42% 0.01 260);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header-stats-row {
+        gap: var(--space-xl);
+      }
+
+      .rating-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: var(--space-2xl);
+      }
+
+      .footer-links {
+        gap: var(--space-2xl);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-stats-row {
+        gap: var(--space-lg);
+      }
+
+      .header-stat-divider {
+        display: none;
+      }
+
+      .studios-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* hidden class */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-emblem">
+    <div class="emblem-ring"></div>
+    <div class="emblem-ring"></div>
+    <div class="emblem-ring"></div>
+  </div>
+
+  <div class="header-eyebrow">
+    杭州市上城区政协
+  </div>
+
+  <h1>委员工作室履职平台</h1>
+  <p class="header-subtitle">凝聚共识 · 协商共治 · 服务群众</p>
+
+  <div class="header-stats-row">
+    <div class="header-stat">
+      <span class="header-stat-number" id="countStudios">50</span>
+      <span class="header-stat-label">委员工作室</span>
+    </div>
+    <div class="header-stat-divider"></div>
+    <div class="header-stat">
+      <span class="header-stat-number">14</span>
+      <span class="header-stat-label">街道全覆盖</span>
+    </div>
+    <div class="header-stat-divider"></div>
+    <div class="header-stat">
+      <span class="header-stat-number">25</span>
+      <span class="header-stat-label">五星工作室</span>
+    </div>
+    <div class="header-stat-divider"></div>
+    <div class="header-stat">
+      <span class="header-stat-number">46</span>
+      <span class="header-stat-label">年度活动场次</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-item active" href="#overview">平台概况</a>
+    <a class="nav-item" href="#rating">星级评定</a>
+    <a class="nav-item" href="#studios">工作室名录</a>
+    <a class="nav-item" href="#activities">近期活动</a>
+    <a class="nav-item" href="#plan">2026履职计划</a>
+  </div>
+</nav>
+
+<!-- ── OVERVIEW ── -->
+<section id="overview">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">平台概况</div>
+      <h2>着力构建宽领域、多层次、常态化的协商体系</h2>
+      <p class="section-desc">深化"楼宇商圈""宋韵文化"和"全龄特有爱"公益慈善品牌建设，不断提升委员工作室辨识度和影响力。</p>
+    </div>
+
+    <div class="overview-block reveal">
+      <p class="overview-text">
+        上城区政协按照"向基层延伸覆盖"和"不建机构建机制"工作要求，坚持党建引领，强化委员工作室"三位一体"建设，牢牢把握功能定位，立足区域发展实际，以打造"一室一品"为特色，深化"楼宇商圈""宋韵文化"和"全龄特有爱"公益慈善品牌建设，着力构建宽领域、多层次、常态化的协商体系，不断提升委员工作室辨识度和影响力，密切与界别群众的联系，凝聚社会各界共识，助推区域经济高质量发展。
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-lg); margin-top: var(--space-2xl);">
+      <div class="reveal" style="background:var(--white); border-radius:12px; padding:var(--space-xl); border:1px solid oklch(91% 0.008 75); text-align:center;">
+        <div style="width:48px; height:48px; background:oklch(95% 0.03 25); border-radius:12px; display:flex; align-items:center; justify-content:center; margin: 0 auto var(--space-md);">
+          <svg width="24" height="24" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+        </div>
+        <div style="font-family:'Noto Serif SC',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:6px;">街道全覆盖</div>
+        <div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">委员工作室覆盖上城区所有14个街道，延伸服务触角</div>
+      </div>
+      <div class="reveal" style="background:var(--white); border-radius:12px; padding:var(--space-xl); border:1px solid oklch(91% 0.008 75); text-align:center;">
+        <div style="width:48px; height:48px; background:oklch(95% 0.03 25); border-radius:12px; display:flex; align-items:center; justify-content:center; margin: 0 auto var(--space-md);">
+          <svg width="24" height="24" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        </div>
+        <div style="font-family:'Noto Serif SC',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:6px;">一室一品</div>
+        <div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">50个工作室各具特色，打造个性化服务品牌体系</div>
+      </div>
+      <div class="reveal" style="background:var(--white); border-radius:12px; padding:var(--space-xl); border:1px solid oklch(91% 0.008 75); text-align:center;">
+        <div style="width:48px; height:48px; background:oklch(95% 0.03 25); border-radius:12px; display:flex; align-items:center; justify-content:center; margin: 0 auto var(--space-md);">
+          <svg width="24" height="24" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div style="font-family:'Noto Serif SC',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:6px;">星级评定</div>
+        <div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">年度星级评定机制，五星工作室占比50%</div>
+      </div>
+      <div class="reveal" style="background:var(--white); border-radius:12px; padding:var(--space-xl); border:1px solid oklch(91% 0.008 75); text-align:center;">
+        <div style="width:48px; height:48px; background:oklch(95% 0.03 25); border-radius:12px; display:flex; align-items:center; justify-content:center; margin: 0 auto var(--space-md);">
+          <svg width="24" height="24" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div style="font-family:'Noto Serif SC',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:6px;">界别全联动</div>
+        <div style="font-size:12px; color:var(--ink-soft); line-height:1.6;">涵盖无党派、工会、社会福利等多界别联合工作室</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAR RATING ── -->
+<section id="rating" style="background: oklch(97% 0.007 70);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">星级评定</div>
+      <h2>2025年度委员工作室星级评定结果</h2>
+      <p class="section-desc">共评定五星工作室25个、四星工作室17个、三星工作室4个，优秀率达92%。</p>
+    </div>
+
+    <div class="rating-grid">
+      <div class="rating-visual reveal">
+        <h3>各星级数量分布</h3>
+        <div class="star-row">
+          <div class="star-label">
+            <span class="star-icon">★★★★★</span>
+          </div>
+          <div class="star-bar-track">
+            <div class="star-bar-fill" style="width:100%; --i:0;"></div>
+          </div>
+          <div class="star-count">25</div>
+        </div>
+        <div class="star-row">
+          <div class="star-label">
+            <span class="star-icon">★★★★</span>
+          </div>
+          <div class="star-bar-track">
+            <div class="star-bar-fill" style="width:68%; --i:1;"></div>
+          </div>
+          <div class="star-count">17</div>
+        </div>
+        <div class="star-row">
+          <div class="star-label">
+            <span class="star-icon">★★★</span>
+          </div>
+          <div class="star-bar-track">
+            <div class="star-bar-fill" style="width:16%; --i:2;"></div>
+          </div>
+          <div class="star-count">4</div>
+        </div>
+
+        <div style="margin-top: var(--space-xl); padding-top: var(--space-xl); border-top: 1px solid oklch(92% 0.005 75);">
+          <div style="display:flex; gap: var(--space-md); flex-wrap: wrap;">
+            <div style="flex:1; min-width:100px; text-align:center; padding: var(--space-md); background: oklch(97% 0.005 75); border-radius:8px;">
+              <div style="font-family:'Noto Serif SC',serif; font-size:24px; font-weight:700; color:var(--red-mid);">92%</div>
+              <div style="font-size:12px; color:var(--ink-soft); margin-top:4px;">四星及以上比例</div>
+            </div>
+            <div style="flex:1; min-width:100px; text-align:center; padding: var(--space-md); background: oklch(97% 0.005 75); border-radius:8px;">
+              <div style="font-family:'Noto Serif SC',serif; font-size:24px; font-weight:700; color:var(--red-mid);">50%</div>
+              <div style="font-size:12px; color:var(--ink-soft); margin-top:4px;">五星工作室占比</div>
+            </div>
+            <div style="flex:1; min-width:100px; text-align:center; padding: var(--space-md); background: oklch(97% 0.005 75); border-radius:8px;">
+              <div style="font-family:'Noto Serif SC',serif; font-size:24px; font-weight:700; color:var(--red-mid);">46</div>
+              <div style="font-size:12px; color:var(--ink-soft); margin-top:4px;">参评工作室总数</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rating-visual reveal">
+        <h3>星级占比饼图</h3>
+        <div class="donut-wrapper" style="height: 200px;">
+          <svg class="donut-svg" width="180" height="180" viewBox="0 0 180 180">
+            <!-- 背景圆 -->
+            <circle cx="90" cy="90" r="70" fill="none" stroke="oklch(93% 0.006 75)" stroke-width="24"/>
+            <!-- 五星: 25/46 = 54.3% → 238°  -->
+            <circle cx="90" cy="90" r="70" fill="none"
+              stroke="oklch(48% 0.21 28)"
+              stroke-width="24"
+              stroke-dasharray="238 201"
+              stroke-dashoffset="0"
+              transform="rotate(-90 90 90)"
+              stroke-linecap="butt"/>
+            <!-- 四星: 17/46 = 37% → 161° -->
+            <circle cx="90" cy="90" r="70" fill="none"
+              stroke="oklch(62% 0.16 28)"
+              stroke-width="24"
+              stroke-dasharray="161 278"
+              stroke-dashoffset="-238"
+              transform="rotate(-90 90 90)"
+              stroke-linecap="butt"/>
+            <!-- 三星: 4/46 = 8.7% → 38° -->
+            <circle cx="90" cy="90" r="70" fill="none"
+              stroke="oklch(80% 0.08 28)"
+              stroke-width="24"
+              stroke-dasharray="38 401"
+              stroke-dashoffset="-399"
+              transform="rotate(-90 90 90)"
+              stroke-linecap="butt"/>
+            <text x="90" y="85" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="22" font-weight="700" fill="oklch(38% 0.18 25)">46</text>
+            <text x="90" y="104" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="11" fill="oklch(55% 0.02 260)">工作室</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:oklch(48% 0.21 28);"></div>
+              <div>
+                <div style="font-weight:600; color:var(--ink);">五星 · 25个</div>
+                <div style="font-size:12px; color:var(--ink-soft);">占比 54.3%</div>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:oklch(62% 0.16 28);"></div>
+              <div>
+                <div style="font-weight:600; color:var(--ink);">四星 · 17个</div>
+                <div style="font-size:12px; color:var(--ink-soft);">占比 37.0%</div>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:oklch(80% 0.08 28);"></div>
+              <div>
+                <div style="font-weight:600; color:var(--ink);">三星 · 4个</div>
+                <div style="font-size:12px; color:var(--ink-soft);">占比 8.7%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STUDIOS ── -->
+<section id="studios">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">工作室名录</div>
+      <h2>50个委员工作室全览</h2>
+      <p class="section-desc">点击筛选器快速查找，支持按工作室名称搜索。</p>
+    </div>
+
+    <div class="studios-filter reveal">
+      <input class="search-box" type="text" id="studioSearch" placeholder="搜索工作室名称或负责人…">
+      <button class="filter-btn active" onclick="filterStudios('all', this)">全部（50）</button>
+      <button class="filter-btn" onclick="filterStudios('street', this)">街道小组</button>
+      <button class="filter-btn" onclick="filterStudios('personal', this)">个人工作室</button>
+      <button class="filter-btn" onclick="filterStudios('community', this)">社区工作室</button>
+      <button class="filter-btn" onclick="filterStudios('jiepie', this)">界别工作室</button>
+    </div>
+
+    <div class="studios-grid" id="studiosGrid">
+      <!-- JS generated -->
+    </div>
+
+    <div class="pagination" id="studioPagination">
+      <!-- JS generated -->
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVITIES ── -->
+<section id="activities" style="background: oklch(97% 0.007 70);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">近期活动</div>
+      <h2>委员工作室风采展示</h2>
+      <p class="section-desc">各工作室积极开展协商议事、志愿服务、文化传承等特色活动，展示委员履职风采。</p>
+    </div>
+
+    <div class="activities-grid" id="activitiesGrid">
+      <!-- JS generated -->
+    </div>
+  </div>
+</section>
+
+<!-- ── PLAN 2026 ── -->
+<section id="plan">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">2026履职计划</div>
+      <h2>新一年履职工作部署</h2>
+      <p class="section-desc">2026年各界别及街道"民生议事堂"年度履职计划已制定完成，聚焦民生实事、创新协商形式。</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-xl);">
+      <div class="reveal" style="background:var(--white); border-radius:16px; padding:var(--space-2xl); border:1px solid oklch(91% 0.008 75);">
+        <div style="display:flex; align-items:center; gap:var(--space-md); margin-bottom:var(--space-xl);">
+          <div style="width:40px; height:40px; background:oklch(93% 0.03 25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="20" height="20" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:16px; font-weight:600; color:var(--ink);">各界别年度履职计划</h3>
+        </div>
+        <div id="planJiepie" style="display:flex; flex-direction:column; gap:var(--space-sm);">
+          <!-- generated -->
+        </div>
+      </div>
+
+      <div class="reveal" style="background:var(--white); border-radius:16px; padding:var(--space-2xl); border:1px solid oklch(91% 0.008 75);">
+        <div style="display:flex; align-items:center; gap:var(--space-md); margin-bottom:var(--space-xl);">
+          <div style="width:40px; height:40px; background:oklch(93% 0.03 25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="20" height="20" fill="none" stroke="oklch(48% 0.21 28)" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:16px; font-weight:600; color:var(--ink);">街道民生议事堂计划</h3>
+        </div>
+        <div id="planStreet" style="display:flex; flex-direction:column; gap:var(--space-sm);">
+          <!-- generated -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">上城区政协委员工作室履职平台</div>
+        <div class="footer-tagline">凝聚共识 · 协商共治 · 服务群众</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <h4>快速导航</h4>
+          <a href="#overview">平台概况</a>
+          <a href="#rating">星级评定</a>
+          <a href="#studios">工作室名录</a>
+        </div>
+        <div class="footer-link-group">
+          <h4>更多内容</h4>
+          <a href="#activities">近期活动</a>
+          <a href="#plan">2026履职计划</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 杭州市上城区政协 · 委员工作室履职平台</div>
+      <div class="footer-copy">数据来源：上城区政协委员工作室建设材料汇总</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──
+const studios = [
+  {id:1, name:"政协湖滨小组委员工作室", leader:"查靖", address:"上城区羊血弄10号", type:"street"},
+  {id:2, name:"政协清波小组委员工作室", leader:"徐洁", address:"上城区清波街道蔡官巷35号三楼", type:"street"},
+  {id:3, name:"政协小营小组委员工作室", leader:"冷晓辉", address:"上城区建国南路98号小营街道办事处", type:"street"},
+  {id:4, name:"政协望江小组委员工作室", leader:"毛静波", address:"上城区翡翠海岸1幢6号", type:"street"},
+  {id:5, name:"政协南星小组委员工作室", leader:"游广敏", address:"上城区目术塘创意园2号楼7楼", type:"street"},
+  {id:6, name:'紫阳街道"三一"委员工作室', leader:"王盈", address:"上城区金钗袋巷79号", type:"street"},
+  {id:7, name:'闸弄口街道"基层治理"委员工作室', leader:"祝文雅", address:"上城区闸弄口街道党群服务中心", type:"street"},
+  {id:8, name:"政协凯旋小组委员工作室", leader:"金志伟", address:"上城区凤起东路127号", type:"street"},
+  {id:9, name:'采荷街道"幸福19"委员工作室', leader:"赵丹晨", address:"上城区采荷街道洁莲社区", type:"street"},
+  {id:10, name:"政协四季青小组委员工作室", leader:"李岗", address:"上城区民心路280号平安金融中心B座3楼", type:"street"},
+  {id:11, name:"政协笕桥小组委员工作室", leader:"阮骏", address:"上城区笕桥街道政协会议室", type:"street"},
+  {id:12, name:"政协彭埠小组委员工作室", leader:"任渊", address:"上城区S2杭甬高速附近罗家老宅", type:"street"},
+  {id:13, name:"政协九堡小组委员工作室", leader:"胡建清", address:"上城区九乔街与杭乔路交叉口", type:"street"},
+  {id:14, name:"政协丁兰小组委员工作室", leader:"倪勇卿", address:"上城区临丁路699号丁兰街道办事处5号楼4楼", type:"street"},
+  {id:15, name:"张瑞旭委员工作室", leader:"张瑞旭", address:"上城区凯旋街道凯益荟208室", type:"personal"},
+  {id:16, name:"缪渭川委员工作室", leader:"缪渭川", address:"上城区凯旋街道南肖埠社区", type:"personal"},
+  {id:17, name:"虞军红委员工作室", leader:"虞军红", address:"上城区运新花苑运新社区", type:"personal"},
+  {id:18, name:"商业服务智库委员工作室", leader:"姚华俊、黄晓芹", address:"上城区新业路8号UDC时代大厦3楼", type:"personal"},
+  {id:19, name:"俞富康宋韵文化委员工作室", leader:"俞富康", address:"上城区凯旋路151号", type:"personal"},
+  {id:20, name:"爱馨文化公益委员工作室", leader:"杨洁", address:"上城区南山路198号（杭州书房）", type:"personal"},
+  {id:21, name:'"文润童心"委员工作室', leader:"周媛媛", address:"上城区清波街道府学巷8号", type:"personal"},
+  {id:22, name:'"老爸好商量"委员工作室', leader:"俞富根", address:"上城区四宜路180号", type:"personal"},
+  {id:23, name:"侨见未来委员工作室", leader:"胡晓敏", address:"上城区兰巷101-104号（山蜂书房）", type:"personal"},
+  {id:24, name:"宋韵老字号委员工作室", leader:"屠明珏", address:"上城区江城路865号满江红大酒店二楼", type:"personal"},
+  {id:25, name:"幸福邻里委员工作室", leader:"尹兆青", address:"上城区闸弄口街道红梅社区", type:"community"},
+  {id:26, name:"大健康委员工作室", leader:"谢慧淼", address:"上城区凯旋路与凯林巷交叉口凯西社区", type:"personal"},
+  {id:27, name:"大成委员工作室", leader:"陈磊", address:"上城区钱江路1366号华润大厦A座18层", type:"personal"},
+  {id:28, name:'"邻聚力"委员工作室', leader:"余丹凤", address:"上城区凤起东路203号中豪五福天地商业中心", type:"personal"},
+  {id:29, name:"东港社区委员工作室", leader:"蒋平樑", address:"上城区笕桥街道东港社区", type:"community"},
+  {id:30, name:"建和社区委员工作室", leader:"周建卫", address:"上城区彭埠街道建和社区", type:"community"},
+  {id:31, name:"杨柳郡社区委员工作室", leader:"王鹏", address:"上城区九和路660号绿城杨柳郡", type:"community"},
+  {id:32, name:"长睦幸福湾委员工作室", leader:"龚云玉", address:"上城区丁兰街道长睦苑社区", type:"community"},
+  {id:33, name:"同心·共富委员工作室", leader:"吴韵", address:"上城区丁兰街道皋城村文化礼堂", type:"community"},
+  {id:34, name:"乐动新声委员工作室", leader:"俞宙", address:"上城区金峰大厦1503室", type:"personal"},
+  {id:35, name:"茗荟聚智委员工作室", leader:"王容峰", address:"上城区大井巷30-4号", type:"personal"},
+  {id:36, name:"上城区政协无党派界别委员工作室", leader:"凌栋", address:"上城区凯旋路247-1号4楼", type:"jiepie"},
+  {id:37, name:"上城区政协工会界别委员工作室", leader:"蔡肇颖", address:"上城区工人文化宫（太平门直街458号）", type:"jiepie"},
+  {id:38, name:"上城区政协社会福利和保障界别委员工作室", leader:"吴国庆", address:"上城区凯旋路125号（特有爱·幸福体验馆）", type:"jiepie"},
+  {id:39, name:"有意思委员工作室", leader:"方晓阳", address:"上城区复兴南街130号", type:"personal"},
+  {id:40, name:"春泥委员工作室", leader:"沈春妮", address:"上城区采荷路34号社会组织服务中心5楼", type:"personal"},
+  {id:41, name:"两岸一家亲委员工作室", leader:"陆雯", address:"上城区解放路189号-2", type:"personal"},
+  {id:42, name:'"视觉之思"委员工作室', leader:"何晓菲", address:"上城区虎玉路16-18号", type:"personal"},
+  {id:43, name:'"育共体 阳光行"委员工作室', leader:"王梦婷", address:"上城区景芳三区58幢新社区邻里中心", type:"community"},
+  {id:44, name:"非遗委员工作室", leader:"胡志强", address:"上城区大井巷55号", type:"personal"},
+  {id:45, name:"乐医汇委员工作室", leader:"潘乐屹", address:"上城区同协路1279号西子智慧产业园", type:"personal"},
+  {id:46, name:"全民阅读委员工作室", leader:"赵群伟", address:"上城区中山中路6号", type:"personal"},
+  {id:47, name:"健康九久委员工作室", leader:"李祖胜", address:"上城区九堡街道蓝桥卫生服务站", type:"community"},
+  {id:48, name:"智汇钱潮委员工作室", leader:"沈波", address:"上城区小院书房", type:"personal"},
+  {id:49, name:"环境资源和农业界别委员工作室", leader:"熊义勤、骆鉴湖", address:"浙江大学华家池校区；城星路中天国开大厦19楼", type:"jiepie"},
+  {id:50, name:"漱玉集委员工作室", leader:"王盈", address:"上城区紫阳街道闻潮路77号", type:"personal"}
+];
+
+const activities = [
+  {studio:"政协湖滨小组委员工作室", title:"学习考察新质生产力——万事利科创中心", img:"5. 委员履职平台/1-政协湖滨小组委员工作室-学习考察新质生产力一-万事利科创中心.webp"},
+  {studio:"政协清波小组委员工作室", title:"幸福清波，文化送福，联动中国美院为居民送新年祝福", img:"5. 委员履职平台/2-政协清波小组委员工作室-幸福清波，文化送福，联动中国美院为清波派出所、禁毒所、清波居民送新年祝福.webp"},
+  {studio:'紫阳"三一"委员工作室', title:'践行"委员说·委员做"，锚定"两个先行"目标，领跑"基层自治"之路', img:"5. 委员履职平台/3-政协紫阳\"三一\"委员工作室-践行\"委员说·委员做\"，锚定\"两个先行\"目标，领跑\"基层白治\"之路.webp"},
+  {studio:'采荷"幸福19"委员工作室', title:'"疗愈经济分享体验会"活动', img:'5. 委员履职平台/4-采荷街道"幸福19"委员工作室-"疗愈经济分享体验会"活动.webp'},
+  {studio:"政协四季青小组委员工作室", title:'市区县三级联动，召开"投早投小投科技"专题协商会', img:"5. 委员履职平台/5-政协四季青小组委员工作室-市区县三级联动，召开\"投早投小投科技\"专题协商会.webp"},
+  {studio:"政协彭埠小组委员工作室", title:"邀请非遗传承人开展非遗制作体验活动", img:"5. 委员履职平台/6-政协彭埠小组委员工作室-邀请非遗传承人开展非遗制作体验活动.webp"},
+  {studio:"工会界别委员工作室", title:'开展"美丽大讲堂"活动', img:"5. 委员履职平台/7-工会界别委员工作室-开展\"美丽大讲堂\"活动.webp"},
+  {studio:"社会福利和保障界别委员工作室", title:"残疾人之家的义卖活动", img:"5. 委员履职平台/8-社会福利和保障界别委员工作室-残疾人之家的义卖活动.webp"},
+  {studio:'"文润童心"委员工作室', title:"传承和弘扬中华优秀传统文化，探索乡村优秀传统文化启蒙教育新路径", img:"5. 委员履职平台/9-\"文润童心\"委员工作室-传承和弘扬中华优秀传统文化，探索乡村优秀传统文化启蒙教育新路径.webp"},
+  {studio:"全民阅读委员工作室", title:"举办宋韵美学体验活动", img:"5. 委员履职平台/10-全民阅读委员工作室-举办宋韵美学体验活动.webp"},
+  {studio:"爱馨文化公益委员工作室", title:"爱馨文化公益委员工作室活动展示", img:"5. 委员履职平台/11-爱馨文化公益委员工作室-爱馨文化公益委员工作室.webp"},
+  {studio:'"老爸好商量"委员工作室', title:"发扬重视家庭教育优良传统，助力孩子健康快乐成长，举办亲子运动会", img:'5. 委员履职平台/12-"老爸好商量"委员工作室-发扬重视家庭教育优良传统，助力孩子健康快乐成长，举办亲子运动会.webp'},
+  {studio:"有意思委员工作室", title:"工作室委员与社区居民代表召开民生座谈会", img:"5. 委员履职平台/13-有意思委员工作室-工作室委员与社区居民代表召开民生座谈会，听取居民对小区提升、菜场改造、停车难等问题的意见建议.webp"},
+  {studio:"侨见未来委员工作室", title:"关于社区居民空调安装纠纷的专项协商会", img:"5. 委员履职平台/14-侨见未来委员工作室-关于社区居民空调安装纠纷的专项协商会.webp"},
+  {studio:"张瑞旭委员工作室", title:"举办委员工作室跨代共融日活动", img:"5. 委员履职平台/15-张瑞旭委员工作室-举办委员工作室跨代共融日活动.webp"},
+  {studio:"大健康委员工作室", title:"传承国粹，践行公益，走进社区开展健康宣教义诊活动", img:"5. 委员履职平台/16-大健康委员工作室-传承国粹，践行公益，走进社区开展健康宣教义诊活动.webp"},
+  {studio:"俞富康宋韵文化委员工作室", title:'国际艺术交流送中国"福"', img:"5. 委员履职平台/17-俞富康宋韵文化委员工作室-国际艺术交流送中国\"福\".webp"},
+  {studio:"春泥委员工作室", title:"两会期间迎新送福、送春联", img:"5. 委员履职平台/18-春泥委员工作室-两会期间迎新送福、送春联.webp"},
+  {studio:'"邻聚力"委员工作室', title:'凝聚社会公益慈善之心，开展"让每个孩子像花儿一样绽放"主题论坛', img:'5. 委员履职平台/19-"邻聚力"委员工作室-凝聚社会公益慈善之心，开展"让每个孩子像花儿一样绽放"主题论坛.webp'},
+  {studio:"建和社区委员工作室", title:"党建引领，做好点滴惠民小事，走访慰问九和人家独居老人", img:"5. 委员履职平台/20-建和社区委员工作室-党建引领，做好点滴惠民小事，走访慰问九和人家独居老人.webp"},
+  {studio:"健康九久委员工作室", title:"召开健康普及专题座谈会", img:"5. 委员履职平台/21-健康九久委员工作室-召开健康普及专题座谈会.webp"},
+  {studio:"同心·共富委员工作室", title:'举行"乡村音乐节"，助力乡村振兴', img:"5. 委员履职平台/22-同心·共富委员工作室-举行\"乡村音乐节\"，用实用管用的好点子，助力乡村振兴.webp"},
+  {studio:"茗荟聚智委员工作室", title:'开展"茶韵议事"交流活动', img:"5. 委员履职平台/23-茗荟聚智委员工作室-开展\"茶韵议事\"交流活动.webp"},
+  {studio:'"育共体 阳光行"委员工作室', title:'"小小政协委员"青少年模拟政协活动', img:'5. 委员履职平台/24-"育共体 阳光行"委员工作室-"小小政协委员"青少年模拟政协活动.webp'},
+  {studio:"乐动新声委员工作室", title:"委员工作室特色活动展示", img:"5. 委员履职平台/25-乐动新声委员工作室-委员工作室.webp"}
+];
+
+const jiepieData = [
+  {name:"经济科技界", sessions:4, theme:"助力新质生产力发展"},
+  {name:"文化教育界", sessions:4, theme:"传承宋韵文化，推进文旅融合"},
+  {name:"医药卫生界", sessions:3, theme:"社区健康促进与老龄服务"},
+  {name:"社会福利界", sessions:3, theme:"公益慈善与残障关爱"},
+  {name:"共青团与青联界", sessions:3, theme:"青年创新创业协商"},
+  {name:"农业界", sessions:2, theme:"乡村振兴与共同富裕"},
+  {name:"无党派界", sessions:3, theme:"专业智库建言"},
+  {name:"工会界", sessions:4, theme:"职工权益与文化活动"},
+];
+
+const streetData = [
+  {name:"湖滨街道", theme:"商圈文旅协商", sessions:3},
+  {name:"清波街道", theme:"传统文化传承", sessions:4},
+  {name:"小营街道", theme:"社区治理与居民自治", sessions:3},
+  {name:"望江街道", theme:"滨江发展与民生保障", sessions:3},
+  {name:"紫阳街道", theme:"基层治理创新", sessions:4},
+  {name:"闸弄口街道", theme:"社区公益与邻里和谐", sessions:3},
+  {name:"凯旋街道", theme:"健康养老与家庭教育", sessions:3},
+  {name:"采荷街道", theme:"疗愈经济与社区服务", sessions:3},
+  {name:"四季青街道", theme:"科技创新与投资议事", sessions:4},
+  {name:"笕桥街道", theme:"社区文化与非遗保护", sessions:3},
+  {name:"彭埠街道", theme:"非遗传承与社区服务", sessions:3},
+  {name:"九堡街道", theme:"健康促进与民生议事", sessions:3},
+  {name:"丁兰街道", theme:"共同富裕与乡村振兴", sessions:4},
+  {name:"南星街道", theme:"滨江经济与城市更新", sessions:3},
+];
+
+// ── RENDER STUDIOS ──
+let currentFilter = 'all';
+let currentPage = 1;
+const PAGE_SIZE = 12;
+
+function getFilteredStudios() {
+  const q = document.getElementById('studioSearch').value.toLowerCase();
+  return studios.filter(s => {
+    const matchType = currentFilter === 'all' || s.type === currentFilter;
+    const matchQ = !q || s.name.toLowerCase().includes(q) || s.leader.toLowerCase().includes(q) || s.address.toLowerCase().includes(q);
+    return matchType && matchQ;
+  });
+}
+
+function filterStudios(type, btn) {
+  currentFilter = type;
+  currentPage = 1;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderStudios();
+}
+
+function renderStudios() {
+  const filtered = getFilteredStudios();
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page = filtered.slice(start, start + PAGE_SIZE);
+
+  const typeLabel = {street:'街道小组', personal:'个人工作室', community:'社区工作室', jiepie:'界别工作室'};
+  const typeColor = {street:'oklch(48% 0.21 28)', personal:'oklch(55% 0.18 200)', community:'oklch(55% 0.15 150)', jiepie:'oklch(52% 0.16 280)'};
+  const typeBg   = {street:'oklch(95% 0.025 25)', personal:'oklch(95% 0.015 200)', community:'oklch(95% 0.015 150)', jiepie:'oklch(95% 0.015 280)'};
+
+  document.getElementById('studiosGrid').innerHTML = page.map(s => `
+    <div class="studio-card reveal visible">
+      <div class="studio-card-top">
+        <span class="studio-id">NO.${String(s.id).padStart(2,'0')}</span>
+        <span style="font-size:11px; font-weight:500; color:${typeColor[s.type]}; background:${typeBg[s.type]}; padding:2px 8px; border-radius:4px; flex-shrink:0;">
+          ${typeLabel[s.type]}
+        </span>
+      </div>
+      <div class="studio-name">${s.name}</div>
+      <div class="studio-leader">
+        <svg class="studio-leader-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
+        </svg>
+        ${s.leader}
+      </div>
+      <div class="studio-address">
+        <svg class="studio-address-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        ${s.address}
+      </div>
+    </div>
+  `).join('');
+
+  // pagination
+  const pag = document.getElementById('studioPagination');
+  if (totalPages <= 1) { pag.innerHTML = ''; return; }
+  let html = '';
+  if (currentPage > 1) html += `<button class="page-btn" onclick="goPage(${currentPage-1})">‹</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    html += `<button class="page-btn${i===currentPage?' active':''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  if (currentPage < totalPages) html += `<button class="page-btn" onclick="goPage(${currentPage+1})">›</button>`;
+  pag.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderStudios();
+  document.getElementById('studios').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── RENDER ACTIVITIES ──
+function renderActivities() {
+  const basePath = 'C:/Users/45404/Desktop/新建文件夹/data/';
+  document.getElementById('activitiesGrid').innerHTML = activities.map(a => `
+    <div class="activity-card reveal">
+      <div class="activity-img-wrap">
+        <img src="${basePath}${a.img}" alt="${a.title}" loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.style.background='oklch(92% 0.015 25)'; this.parentElement.innerHTML='<div style=\\'height:100%; display:flex; align-items:center; justify-content:center; padding:16px;\\'><svg width=\\'32\\' height=\\'32\\' fill=\\'none\\' stroke=\\'oklch(65% 0.08 25)\\' stroke-width=\\'1.5\\' viewBox=\\'0 0 24 24\\'><rect x=\\'3\\' y=\\'3\\' width=\\'18\\' height=\\'18\\' rx=\\'2\\'/><circle cx=\\'8.5\\' cy=\\'8.5\\' r=\\'1.5\\'/><polyline points=\\'21 15 16 10 5 21\\'/></svg></div>'">
+      </div>
+      <div class="activity-body">
+        <div class="activity-tag">${a.studio}</div>
+        <div class="activity-title">${a.title}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── RENDER PLAN ──
+function renderPlan() {
+  document.getElementById('planJiepie').innerHTML = jiepieData.map(d => `
+    <div style="display:flex; align-items:center; justify-content:space-between; padding: 10px 12px; background:oklch(97% 0.005 75); border-radius:8px; gap:12px;">
+      <div>
+        <div style="font-size:14px; font-weight:500; color:var(--ink);">${d.name}</div>
+        <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">${d.theme}</div>
+      </div>
+      <div style="font-family:'Noto Serif SC',serif; font-size:18px; font-weight:700; color:var(--red-mid); flex-shrink:0;">${d.sessions}<span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:var(--ink-soft); font-weight:400; margin-left:2px;">场</span></div>
+    </div>
+  `).join('');
+
+  document.getElementById('planStreet').innerHTML = streetData.map(d => `
+    <div style="display:flex; align-items:center; justify-content:space-between; padding: 10px 12px; background:oklch(97% 0.005 75); border-radius:8px; gap:12px;">
+      <div>
+        <div style="font-size:14px; font-weight:500; color:var(--ink);">${d.name}</div>
+        <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">${d.theme}</div>
+      </div>
+      <div style="font-family:'Noto Serif SC',serif; font-size:18px; font-weight:700; color:var(--red-mid); flex-shrink:0;">${d.sessions}<span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:var(--ink-soft); font-weight:400; margin-left:2px;">场</span></div>
+    </div>
+  `).join('');
+}
+
+// ── SCROLL REVEAL ──
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 60) + 'ms';
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// ── NAV ACTIVE ──
+function initNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navItems.forEach(n => {
+          n.classList.toggle('active', n.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => obs.observe(s));
+}
+
+// ── SEARCH ──
+document.getElementById('studioSearch').addEventListener('input', () => {
+  currentPage = 1;
+  renderStudios();
+});
+
+// ── INIT ──
+renderStudios();
+renderActivities();
+renderPlan();
+setTimeout(initReveal, 50);
+initNav();
+</script>
+</body>
+</html>
